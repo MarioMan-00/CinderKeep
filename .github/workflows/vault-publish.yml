@@ -49,7 +49,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           VAULT_CHECK: ${{ inputs.check && '1' || '' }}
           # The folder testers get (it must have index.html at the top). Only the game's own files: no tests or tools.
-          VAULT_DIST: web
+          VAULT_DIST: cinderkeep
           # Optional: a command that builds VAULT_DIST first, e.g. npm ci && npm run build.
           # VAULT_BUILD:
           # Optional: a command that writes the version ({version}) into the game.
