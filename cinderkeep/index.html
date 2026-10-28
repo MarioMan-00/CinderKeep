@@ -1,10 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
 <title>Cinderkeep</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0a0f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500;700&family=Alegreya+Sans:ital,wght@0,400;0,700;1,400&display=swap">
 <link rel="stylesheet" href="css/style.css">
-
+</head>
+<body>
 <div class="wrap">
   <header>
     <h1>Cinder<span>keep</span></h1>
@@ -14,7 +20,8 @@
     <canvas id="game"></canvas>
     <div class="ui" id="ui">
       <div class="hud tl" id="hudTL" hidden>
-        <div class="bar hp" id="hpBar" role="img" aria-label="Health"><span class="trail" id="hpTrail"></span><span class="fill" id="hpFill"></span></div>
+        <div class="bar hp" id="hpBar" role="img" aria-label="Health"><span class="trail" id="hpTrail"></span><span class="fill" id="hpFill"></span><span class="rally" id="hpRally"></span></div>
+        <div class="bar mp" id="mpBar" role="img" aria-label="Magic" hidden><span class="fill" id="mpFill"></span></div>
         <div class="bar st" id="stBar" role="img" aria-label="Stamina"><span class="fill" id="stFill"></span></div>
         <div class="counts">
           <span class="chip" title="Healing flasks"><img id="icoFlaskS" alt="Flasks"><b id="flaskN">2/2</b></span>
@@ -41,17 +48,22 @@
         <div class="bname"><span id="bossName">The Ashen King</span><span class="phase">Phase <i id="ph1"></i><i id="ph2"></i></span></div>
         <div class="bbar"><span class="trail" id="bossTrail"></span><span class="fill" id="bossFill"></span></div>
       </div>
+      <div class="touch off" id="touch" aria-hidden="true">
+        <div class="stick" id="stick" data-mv="Move stick"><i class="base" id="stBase"></i><i class="knob" id="stKnob"></i></div>
+        <div class="titems" id="tItems" data-mv="Items"><button class="tb" data-k="heal" id="tbHeal" aria-label="Drink flask"><img alt=""><b></b></button><button class="tb" data-k="skill" id="tbBomb" aria-label="Throw ember bomb"><img alt=""><b></b></button><button class="tb" data-k="item2" id="tbWard" aria-label="Scatter warding ash"><img alt=""><b></b></button></div>
+        <div class="tabil" id="tAbil" data-mv="Abilities"><button class="tb" data-k="ab1" id="tbAb1" aria-label="Ability 1"><img alt=""><i class="cd"></i><b></b></button><button class="tb" data-k="ab2" id="tbAb2" aria-label="Ability 2"><img alt=""><i class="cd"></i><b></b></button><button class="tb" data-k="ab3" id="tbAb3" aria-label="Ability 3"><img alt=""><i class="cd"></i><b></b></button><button class="tb" data-k="ab4" id="tbAb4" aria-label="Ability 4"><img alt=""><i class="cd"></i><b></b></button></div>
+        <div class="tedit" id="tEdit"><b>Arrange your buttons</b><span id="tEditSel">Drag any control. Tap one to resize it.</span><div><button data-e="minus" aria-label="Smaller">−</button><button data-e="plus" aria-label="Bigger">+</button><button data-e="reset">Reset</button><button data-e="done" class="done">Done</button></div></div>
+        <button class="tb pse" id="tbPause" data-mv="Pause" data-k="pause" aria-label="Pause">≡</button>
+        <button class="tb use" data-k="use" id="tbUse" data-mv="Use" aria-label="Interact">USE</button>
+        <button class="tb rol" id="tbRoll" data-mv="Dodge" data-k="roll" aria-label="Dodge">»</button>
+        <button class="tb hvy aimer" data-k="a2" id="tbA2" data-mv="Heavy" aria-label="Heavy attack, drag to aim"><span id="tbA2t">✠</span><i class="nub"></i></button>
+        <button class="tb jmp" id="tbJump" data-mv="Jump" data-k="jump" aria-label="Jump">⌃</button>
+        <button class="tb atk aimer" data-k="a1" id="tbA1" data-mv="Attack" aria-label="Attack, drag to aim"><img alt=""><i class="nub"></i></button>
+      </div>
       <div class="menu" id="menu" hidden role="dialog" aria-modal="true" aria-labelledby="menuTitle"><div class="panel" id="panel"></div><div class="tcap" id="tcap" aria-hidden="true"></div></div>
     </div>
   </div>
-  <div class="touch" id="touch">
-    <div class="pad"><button data-k="left" aria-label="Move left">‹</button><button data-k="right" aria-label="Move right">›</button><button data-k="down" aria-label="Down">⌄</button></div>
-    <div class="acts">
-      <button data-k="pause" aria-label="Pause">≡</button><button data-k="heal" aria-label="Drink flask">✚</button><button data-k="use" aria-label="Interact">E</button><button data-k="skill" aria-label="Throw ember bomb">Q</button><button data-k="item2" aria-label="Scatter warding ash">R</button><button data-k="roll" aria-label="Dodge">»</button>
-      <button data-k="jump" aria-label="Jump">⌃</button><button class="hot" data-k="a1" aria-label="Light attack">†</button><button class="hot" data-k="a2" aria-label="Heavy attack">✠</button>
-      <button data-k="ab1" aria-label="Ability 1">1</button><button data-k="ab2" aria-label="Ability 2">2</button><button data-k="ab3" aria-label="Ability 3">3</button><button data-k="ab4" aria-label="Ability 4">4</button>
-    </div>
-  </div>
+  <div class="rotate" id="rotate"><div><i></i><b>Turn your phone sideways</b><span>Cinderkeep is played in landscape.</span></div></div>
   <ul class="legend">
     <li><kbd>A</kbd><kbd>D</kbd> walk, hold to run</li>
     <li><kbd>Space</kbd> jump, twice in air</li>
@@ -71,3 +83,5 @@
 </div>
 
 <script src="js/game.js"></script>
+</body>
+</html>

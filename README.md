@@ -15,6 +15,17 @@ Every boss fight has its own theme, "The Last Vigil": an A-minor lament with swe
 
 Settings (title menu or pause menu) has sliders for Master volume, Music and Sound effects, plus a mute toggle (also the M key) and a test sound. Settings are saved on this device.
 
+## Playing on a phone
+Cinderkeep plays on phones held sideways, filling the screen edge to edge (it widens its view to the phone's shape).
+- **Left thumb:** a move stick that appears where your thumb lands.
+- **Right thumb:** attack (drag it to aim), heavy (drag to aim), jump, dodge, the four abilities, and **USE**, which pops up above the abilities when there's something to use.
+- **Top left:** flask, ember bomb and warding ash. **≡** pauses.
+- **Settings → Arrange touch buttons:** drag any control to a new spot and resize it; the layout is saved on the phone.
+- **Settings / main menu → Full screen**, and starting a run on a phone goes full screen by itself.
+
+## Shrines are safe rooms
+Every shrine stands in a safe room with a door on each open side. Doors slide open as you walk up. Enemies can't come in or see you inside, and their missiles break against the doorway.
+
 ## Controls
 Press **Tab** at any time to open the character sheet (health, stamina, gear, upgrade ranks, and the greatsword's temper and damage numbers); press Tab or Esc again to close it. It is also in the pause menu.
 
@@ -26,13 +37,13 @@ Starting a new game opens **Choose your path**. Each character uses the same ani
 | Character | Weapon | Health · Stamina | Strengths |
 |---|---|---|---|
 | **Knight** | Greatsword | 110 · 100 | Takes 10% less damage. The original Ashen Knight. |
-| **Sage** | Ashwood staff | 85 · 115 | The staff is only a focus: its blows deal 2 damage (3 heavy). Arcane Bolt does the killing. |
+| **Sage** | Ashwood staff | 72 · 115 | The staff is only a focus: its blows deal 2 damage (3 heavy). Arcane Bolt does the killing, from a pool of magic. |
 | **Rogue** | Twin daggers | 85 · 125 | 15% faster, cheaper dodges, fast weak swings, 160% damage from behind. |
 | **Sentinel** | War spear and tower shield | 120 · 95 | Takes 15% less damage, the longest reach, a little slower. |
 
 **Knight:** 1 **Heavy Strike** (a crushing heavy blow that staggers), 2 **Shield Bash** (charge and stun), 3 **Battle Cry** (more damage for 8s, throws back nearby foes), 4 **Guard** (take 70% less damage and never stagger for a few seconds).
 
-**Sage:** **Arcane Bolt** on **left click** (or J): no cooldown, hold to keep casting until your stamina runs out (12 stamina a bolt; 18 damage at rank 1 (30 at rank 4), the Sage's main attack, aimed with the mouse: the staff turns to point at your cursor and each bolt leaves from its orb; pierces from rank 3, two extra bolts at rank 4). 1 **Shield of Wisdom** (a barrier that absorbs damage), 2 **Healing Light** (an instant heal), 3 **Mind's Veil** (invisibility: foes lose sight of you, bosses miss more, your next blow deals 180%). **Charged Bolt** on **right click** (or K): hold to gather purple and blue light at the staff's orb (aimed at your cursor the whole time), release to loose it. The longer the charge (full at about 1.1s), the bigger, faster and harder it hits: 19 to 34 damage at rank 1, scaling with Arcane Bolt's rank, piercing every foe in its path and bursting on impact for half damage around it. It costs 18 to 40 stamina depending on the charge.
+**Sage:** the Sage casts from a **magic bar** (blue, between health and stamina), not stamina. **Arcane Bolt** on **left click** (or J, hold to keep casting): 8 magic a bolt, 11 damage at rank 1, one bolt every 0.7s. **Charged Bolt** on **right click** (hold to charge, release to fire): 25–50 magic. Magic refills on its own a moment after you stop casting. **Strike back:** when the Sage is hit, part of the lost health glows on the bar for a few seconds; hitting enemies in that window wins some of it back. At shrines the Sage trains **Deepen the well** (+20 magic, faster recovery) instead of health and stamina, and spends Weapon Shards on **Arcane Bolt - Quicky** (0.55s, 0.42s, then 0.32s between bolts) as well as tempering the staff (+6% a temper for the Sage).
 
 **Rogue:** 1 **Shadow Step** (blink through foes), 2 **Backstab** (appear behind the nearest foe and stab; gets around shields), 3 **Smoke Bomb** (a cloud that hides you and makes nearby foes choke and lose track of you), 4 **Dual Strike** (a quick four- or five-cut flurry).
 
