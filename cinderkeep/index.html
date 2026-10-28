@@ -1,0 +1,73 @@
+<title>Cinderkeep</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500;700&family=Alegreya+Sans:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="css/style.css">
+
+<div class="wrap">
+  <header>
+    <h1>Cinder<span>keep</span></h1>
+    <p class="tag">Choose your path, cross the ruined keep and face the Ashen King.</p>
+  </header>
+  <div class="stage" id="stage" tabindex="0" aria-label="Game screen">
+    <canvas id="game"></canvas>
+    <div class="ui" id="ui">
+      <div class="hud tl" id="hudTL" hidden>
+        <div class="bar hp" id="hpBar" role="img" aria-label="Health"><span class="trail" id="hpTrail"></span><span class="fill" id="hpFill"></span></div>
+        <div class="bar st" id="stBar" role="img" aria-label="Stamina"><span class="fill" id="stFill"></span></div>
+        <div class="counts">
+          <span class="chip" title="Healing flasks"><img id="icoFlaskS" alt="Flasks"><b id="flaskN">2/2</b></span>
+          <span class="chip soul" title="Souls"><img id="icoSoul" alt=""><b id="soulN">0</b><em>souls</em></span>
+          <span class="chip shard" title="Weapon shards"><img id="icoShard" alt=""><b id="shardN">0</b><em>shards</em></span>
+        </div>
+      </div>
+      <div class="hud tr" id="hudTR" hidden><span id="lvName"></span></div>
+      <div class="hud bl" id="hudBL" hidden>
+        <div class="items" id="itemBar">
+        <div class="slot" id="slotFlask" title="Healing flask"><kbd>F</kbd><img id="icoFlask" alt="Flask"><span class="n" id="flaskN2"></span></div>
+        <div class="slot" id="slotBomb" title="Ember bomb"><kbd>Q</kbd><img id="icoBomb" alt="Ember bomb"><span class="n" id="bombN"></span><i class="cd" id="bombCd"></i></div>
+        <div class="slot" id="slotWard" title="Warding ash"><kbd>R</kbd><img id="icoWard" alt="Warding ash"><span class="n" id="wardN"></span><i class="cd" id="wardCd"></i></div>
+        </div>
+        <div class="slot main" title="Greatsword"><kbd>J K</kbd><img id="icoSword" alt="Greatsword"><span class="lv" id="swordLv"></span></div>
+        <div class="abil" id="abBar">
+          <div class="slot ab" id="abS1"><kbd>1</kbd><img id="abI1" alt=""><span class="lv" id="abR1"></span><i class="cd" id="abC1"></i></div>
+          <div class="slot ab" id="abS2"><kbd>2</kbd><img id="abI2" alt=""><span class="lv" id="abR2"></span><i class="cd" id="abC2"></i></div>
+          <div class="slot ab" id="abS3"><kbd>3</kbd><img id="abI3" alt=""><span class="lv" id="abR3"></span><i class="cd" id="abC3"></i></div>
+          <div class="slot ab" id="abS4"><kbd id="abK4">4</kbd><img id="abI4" alt=""><span class="lv" id="abR4"></span><i class="cd" id="abC4"></i></div>
+        </div>
+      </div>
+      <div class="boss" id="bossUI" hidden>
+        <div class="bname"><span id="bossName">The Ashen King</span><span class="phase">Phase <i id="ph1"></i><i id="ph2"></i></span></div>
+        <div class="bbar"><span class="trail" id="bossTrail"></span><span class="fill" id="bossFill"></span></div>
+      </div>
+      <div class="menu" id="menu" hidden role="dialog" aria-modal="true" aria-labelledby="menuTitle"><div class="panel" id="panel"></div><div class="tcap" id="tcap" aria-hidden="true"></div></div>
+    </div>
+  </div>
+  <div class="touch" id="touch">
+    <div class="pad"><button data-k="left" aria-label="Move left">‹</button><button data-k="right" aria-label="Move right">›</button><button data-k="down" aria-label="Down">⌄</button></div>
+    <div class="acts">
+      <button data-k="pause" aria-label="Pause">≡</button><button data-k="heal" aria-label="Drink flask">✚</button><button data-k="use" aria-label="Interact">E</button><button data-k="skill" aria-label="Throw ember bomb">Q</button><button data-k="item2" aria-label="Scatter warding ash">R</button><button data-k="roll" aria-label="Dodge">»</button>
+      <button data-k="jump" aria-label="Jump">⌃</button><button class="hot" data-k="a1" aria-label="Light attack">†</button><button class="hot" data-k="a2" aria-label="Heavy attack">✠</button>
+      <button data-k="ab1" aria-label="Ability 1">1</button><button data-k="ab2" aria-label="Ability 2">2</button><button data-k="ab3" aria-label="Ability 3">3</button><button data-k="ab4" aria-label="Ability 4">4</button>
+    </div>
+  </div>
+  <ul class="legend">
+    <li><kbd>A</kbd><kbd>D</kbd> walk, hold to run</li>
+    <li><kbd>Space</kbd> jump, twice in air</li>
+    <li><kbd>S</kbd>+<kbd>Space</kbd> drop</li>
+    <li><kbd>Shift</kbd> / <kbd>L</kbd> dodge</li>
+    <li><kbd>J</kbd> light attack, chain three</li>
+    <li><kbd>K</kbd> heavy attack</li>
+    <li><kbd>Q</kbd> ember bomb</li>
+    <li><kbd>1</kbd>–<kbd>4</kbd> class abilities</li>
+    <li><kbd>R</kbd> warding ash</li>
+    <li><kbd>F</kbd> heal</li>
+    <li><kbd>E</kbd> take, open, rest, enter</li>
+    <li><kbd>P</kbd> pause · <kbd>Tab</kbd> stats · <kbd>M</kbd> sound on/off</li>
+    <li>Mouse: aim · left click light · right click heavy</li>
+    <li>Rest at the Ashen Shrine to upgrade and save</li>
+  </ul>
+</div>
+
+<script src="js/game.js"></script>
