@@ -1,4 +1,3 @@
-
 /* Layout: a single framed stage, cold stone around one warm window of play; controls beneath */
 :root{
   --night:#0b0a0f; --stone:#17161c; --rim:#2b2932; --ash:#cfc9bd; --dust:#8a8590; --ember:#ff8c2e; --emberL:#ffc368;
@@ -138,6 +137,7 @@ html.mobile .rotate{position:fixed;inset:0;z-index:50;background:var(--night);pl
 .slot.ab img{width:74%;height:74%}
 .slot.ab.ready{border-color:#6a5240;box-shadow:0 0 0 1px #08070a,0 0 .5em #ff8c2e33}
 .slot.ab.flash{border-color:#c4483c}
+.pcls{display:grid;grid-template-columns:repeat(4,1fr);gap:.4em;margin:.2em 0 .7em}.pcls .opt{display:flex;flex-direction:column;align-items:center;gap:.2em;padding:.4em .2em;border:1px solid #2e2a32;background:#141217;text-align:center}.pcls .opt::before{display:none}.pcls .opt .por{width:40px;height:40px;image-rendering:pixelated}.pcls .opt.on{border-color:var(--ember);background:#26181a}.pcls .opt:hover,.pcls .opt:focus-visible{border-color:var(--ember)}
 .cls-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5em;border-top:1px solid #2c2930;padding-top:.6em;margin-bottom:.4em}
 .cls-grid .opt.card{display:grid;grid-template-columns:auto 1fr;column-gap:.7em;align-items:start;border:1px solid #2e2a32;background:#141217;padding:.5em}
 .cls-grid .opt.card::before{display:none}
@@ -176,6 +176,7 @@ html.mobile .rotate{position:fixed;inset:0;z-index:50;background:var(--night);pl
 .bbar .trail{background:#cdb994}.bbar .fill{background:linear-gradient(#cf5446 0 22%,#8f232a 22% 78%,#5c141a 78%)}
 .boss.enraged .bbar .fill{background:linear-gradient(#ffb04a 0 22%,#c4521f 22% 78%,#7a2a14 78%)}
 .boss.enraged .bbar{border-color:#8a4a24}
+.bbar .bnum{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.6em;font-weight:700;line-height:1;letter-spacing:.04em;color:#f2ece0;text-shadow:0 0 2px #000,0 1px 0 #000,1px 0 0 #000,-1px 0 0 #000,0 -1px 0 #000;pointer-events:none;font-variant-numeric:tabular-nums}
 /* ---------- menus ---------- */
 .menu{cursor:var(--cur-point,default);position:absolute;inset:0;display:grid;place-items:center;background:rgba(6,5,8,.66);pointer-events:auto;z-index:5}
 .menu.titleMode{place-items:center start;background:linear-gradient(90deg,rgba(6,5,8,.9) 0%,rgba(6,5,8,.72) 30%,rgba(6,5,8,.15) 58%,rgba(6,5,8,0) 75%),linear-gradient(0deg,rgba(6,5,8,.55),rgba(6,5,8,0) 30%)}
